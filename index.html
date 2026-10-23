@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Collection Sorter</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <div><h1>Collection Sorter</h1><p class="sub">Drop one or more Postman collections. Download them sorted.</p></div>
+  <div id="drop" class="drop" tabindex="0" role="button">
+    <b>Drop Postman collections here</b><span class="sub">or click to choose .json files</span>
+    <input id="pick" type="file" accept=".json,application/json" multiple hidden>
+  </div>
+
+  <div class="card">
+    <label class="opt"><input type="checkbox" id="ph" class="switch"> <span>Add placeholder descriptions where missing</span></label>
+    <label class="opt"><input type="checkbox" id="ff" class="switch"> <span>Folders before requests</span></label>
+    <label class="opt"><input type="checkbox" id="nat" class="switch"> <span>Natural number order (Step 2 before Step 10)</span></label>
+    <label class="opt"><input type="checkbox" id="suf" class="switch"> <span>Add .sorted to the download name</span></label>
+    <label class="opt"><input type="checkbox" id="req" class="switch" checked> <span>Show requests in the preview (off shows folders only)</span></label>
+    <label class="opt"><select id="dir"><option value="1">A → Z</option><option value="-1">Z → A</option></select> <span>Sort direction</span></label>
+  </div>
+
+  <div id="bar" class="actions" hidden>
+    <button class="primary" id="all">Download all</button>
+    <button id="clear">Clear</button>
+  </div>
+  <div id="results"></div>
+</main>
+
+<template id="card">
+  <div class="card result">
+    <div class="file"><span class="fname"></span><span class="pill"></span></div>
+    <p class="stats sub"></p>
+    <div class="cols">
+      <div class="col"><h3>BEFORE</h3><ul class="before"></ul></div>
+      <div class="col"><h3>AFTER</h3><ul class="after"></ul></div>
+    </div>
+    <div class="actions"><button class="primary dl"></button></div>
+  </div>
+</template>
+<script src="script.js"></script>
+</body>
+</html>
